@@ -1,0 +1,64 @@
+0 verbose cli [
+0 verbose cli   '/usr/bin/node',
+0 verbose cli   '/usr/bin/npm',
+0 verbose cli   'ci',
+0 verbose cli   '--scripts-prepend-node-path=true',
+0 verbose cli   '--verbose',
+0 verbose cli   '--production'
+0 verbose cli ]
+1 info using npm@8.4.1
+2 info using node@v17.5.0
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 2ms
+5 timing config:load:file:/usr/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 verbose config production Use `--omit=dev` instead.
+8 timing config:load:cli Completed in 3ms
+9 timing config:load:env Completed in 1ms
+10 timing config:load:file:/var/www/.npmrc Completed in 0ms
+11 timing config:load:project Completed in 4ms
+12 timing config:load:file:/home/laradock/.npmrc Completed in 1ms
+13 timing config:load:user Completed in 1ms
+14 timing config:load:file:/usr/etc/npmrc Completed in 1ms
+15 timing config:load:global Completed in 1ms
+16 timing config:load:validate Completed in 0ms
+17 timing config:load:credentials Completed in 1ms
+18 timing config:load:setEnvs Completed in 1ms
+19 timing config:load Completed in 15ms
+20 timing npm:load:configload Completed in 15ms
+21 timing npm:load:setTitle Completed in 0ms
+22 timing config:load:flatten Completed in 3ms
+23 timing npm:load:display Completed in 10ms
+24 verbose logfile /home/laradock/.npm/_logs/2022-02-12T06_21_42_552Z-debug-0.log
+25 timing npm:load:logFile Completed in 21ms
+26 timing npm:load:timers Completed in 0ms
+27 timing npm:load:configScope Completed in 0ms
+28 timing npm:load Completed in 48ms
+29 timing arborist:ctor Completed in 0ms
+30 verbose loadVirtual Error: loadVirtual requires existing shrinkwrap file
+30 verbose loadVirtual     at Arborist.loadVirtual (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/load-virtual.js:62:18)
+30 verbose loadVirtual     at async Promise.all (index 0)
+30 verbose loadVirtual     at async CI.exec (/usr/lib/node_modules/npm/lib/commands/ci.js:49:5)
+30 verbose loadVirtual     at async module.exports (/usr/lib/node_modules/npm/lib/cli.js:66:5)
+31 timing command:ci Completed in 15ms
+32 verbose stack Error: The `npm ci` command can only install with an existing package-lock.json or
+32 verbose stack npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+32 verbose stack later to generate a package-lock.json file, then try again.
+32 verbose stack     at /usr/lib/node_modules/npm/lib/commands/ci.js:56:15
+32 verbose stack     at async Promise.all (index 0)
+32 verbose stack     at async CI.exec (/usr/lib/node_modules/npm/lib/commands/ci.js:49:5)
+32 verbose stack     at async module.exports (/usr/lib/node_modules/npm/lib/cli.js:66:5)
+33 verbose cwd /var/www
+34 verbose Linux 5.10.76-linuxkit
+35 verbose argv "/usr/bin/node" "/usr/bin/npm" "ci" "--scripts-prepend-node-path=true" "--verbose" "--production"
+36 verbose node v17.5.0
+37 verbose npm  v8.4.1
+38 error The `npm ci` command can only install with an existing package-lock.json or
+38 error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+38 error later to generate a package-lock.json file, then try again.
+39 verbose exit 1
+40 timing npm Completed in 243ms
+41 verbose unfinished npm timer npm-ci:rm 1644646902771
+42 verbose code 1
+43 error A complete log of this run can be found in:
+43 error     /home/laradock/.npm/_logs/2022-02-12T06_21_42_552Z-debug-0.log

@@ -675,6 +675,11 @@ COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
 ARG INSTALL_MYSQLI=false
 
+RUN if [ ${INSTALL_MYSQLI} = true ] && [ ${LARADOCK_PHP_VERSION} = "5.6" ]; then \
+    docker-php-ext-install mysqli && \
+    docker-php-ext-install mysql \
+;fi
+
 RUN if [ ${INSTALL_MYSQLI} = true ]; then \
     docker-php-ext-install mysqli \
 ;fi

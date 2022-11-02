@@ -159,10 +159,10 @@ RUN if [ ${COMPOSER_GLOBAL_INSTALL} = true ]; then \
 ;fi
 
 # Check if auth file is disabled
-ARG COMPOSER_AUTH=false
-ENV COMPOSER_AUTH ${COMPOSER_AUTH}
+ARG COMPOSER_JSON_AUTH=false
+ENV COMPOSER_JSON_AUTH ${COMPOSER_JSON_AUTH}
 
-RUN if [ ${COMPOSER_AUTH} = false ]; then \
+RUN if [ ${COMPOSER_JSON_AUTH} = false ]; then \
     # remove the file
     rm /home/laradock/.composer/auth.json \
 ;fi
@@ -772,6 +772,11 @@ RUN if [ ${INSTALL_NODE} = true ]; then \
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.bashrc \
 ;fi
 
+RUN if [ ${INSTALL_NODE} = true ]; then \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&\
+    apt-get install -y nodejs \
+;fi
+
 # Add PATH for node
 ENV PATH $PATH:/home/laradock/.node-bin
 
@@ -1190,15 +1195,15 @@ RUN if [ ${INSTALL_POWERLINE} = true ]; then \
 ARG INSTALL_SUPERVISOR=false
 
 RUN if [ ${INSTALL_SUPERVISOR} = true ]; then \
-    if [ ${INSTALL_PYTHON} = true ]; then \
-    python -m pip install --upgrade supervisor && \
+    if [ ${INSTALL_PYTHON3} = true ]; then \
+    python3 -m pip install --upgrade supervisor && \
     echo_supervisord_conf > /etc/supervisord.conf && \
     sed -i 's/\;\[include\]/\[include\]/g' /etc/supervisord.conf && \
     sed -i 's/\;files\s.*/files = supervisord.d\/*.conf/g' /etc/supervisord.conf \
   ;fi \
 ;fi
 
-USER laradock
+USER root
 
 ###########################################################################
 # ImageMagick:
